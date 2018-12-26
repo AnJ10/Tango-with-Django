@@ -1,0 +1,47 @@
+{% extends "rango/base.html" %}
+{% load staticfiles %}
+
+
+{% block body_block %}
+
+	<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/signin/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'Bootstrap/registration/Signin_files/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'Bootstrap/registration/Signin_files/signin.css' %}" rel="stylesheet">
+
+	<div class="jumbotron">
+		<h1 class="display-3">Register Here</h1>
+	</div>	
+
+	<div class="container">
+
+      	<form class="form-signin" method="POST" action=".">
+			{% csrf_token %}
+        	<h2 class="form-signin-heading">Enter you details!</h2>
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+            {% endfor %}
+
+    	   	<label for="id_username" class="sr-only">Username</label>  
+        	<input type="text" id="id_username" name="username" class="form-control" placeholder="Enter Username" required=""  maxlength="30">
+        	<label for="id_email" class="sr-only">Email</label>  
+        	<input type="email" id="id_email" name="email" class="form-control" placeholder="Enter Email" required=""  >
+       		<label for="id_password1" class="sr-only">Password</label>  	
+        	<input type="password" id="id_password1" class="form-control" name="password1" placeholder="Enter Password" required="">
+        	<label for="id_password2" class="sr-only">Password</label>  	
+        	<input type="password" id="id_password2" class="form-control" name="password2" placeholder="Enter Password Again" required="">
+        	<button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        	   
+
+      	</form>
+
+    </div>
+
+    <script src="{% static 'Bootstrap/registration/Signin_files/ie10-viewport-bug-workaround.js' %}"></script>
+
+	
+
+{% endblock %}

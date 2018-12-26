@@ -1,0 +1,41 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	About
+{% endblock %}
+
+{% block body_block %}
+		<h1>
+			ABOUT
+		</h1>
+		<h2>
+			You have visited Rango 
+			{% if visits <= 1 %}
+				{{visits}}st time!!
+			{% else %}
+				{{visits}} times!!
+			{% endif %}		
+		</h2>
+		<div>
+			<p>
+				Rango has been put together by <strong> {{author}}</strong>
+			</p>
+			<br/>
+		<!--	<img src="{{MEDIA_URL}}cat.jpg" alt= "Leo Messi!!"/>  -->
+		</div>
+		<button class="btn btn-primary" onClick="alert('You clicked the button using JavaScript.');">
+			Click Me - I run JavaScript
+		</button>	
+		<div id="msg">Hello- I'm here for a JQuery Example too</div>
+		<button class="btn btn-primary" id="about-btn">
+			Click Me - I'm JavaScript on Speed
+		</button>
+
+
+{% endblock %}
+
+
+
+
+

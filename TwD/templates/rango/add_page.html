@@ -1,0 +1,56 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	Add a page
+{% endblock %}
+
+{% block body_block %}
+
+	<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/signin/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'Bootstrap/registration/Signin_files/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'Bootstrap/registration/Signin_files/signin.css' %}" rel="stylesheet">
+	
+	
+	<div class="container">
+		{% if category %}
+			<div class="jumbotron">
+				<h1 class="display-3">{{category.name}}</h1>
+			</div>
+			<form class="form-signin" id="page_form" method="POST" action="{% url 'rango:add_page' category.slug %}">
+				<h2 class="form-signin-heading">Add a Page</h2>
+
+				{% csrf_token %}
+				{% for hidden in form.hidden_fields %}
+					{{ hidden }}
+				{% endfor %}	
+	
+				{% for field in form.visible_fields %}
+					{{ field.errors }}
+				{% endfor %}
+				<label class="sr-only" for="id_title">Title</label>
+				<input type="text" name="title" id="id_title" class="form-control" placeholder="Page Title" maxlength="128">
+				<label class="sr-only" for="id_url">URL</label>
+				<input type="url" name="url" id="id_url" class="form-control" placeholder="URL" >
+				<button class="btn btn-lg btn-primary btn-block" type="submit">Add Page</button>
+				
+			</form>
+		{% else %}
+			<strong>This category does not exist.</strong>
+		{% endif %}
+	</div>
+
+	<script src="{% static 'Bootstrap/registration/Signin_files/ie10-viewport-bug-workaround.js' %}"></script>
+
+{% endblock %}
+
+
+
+
+
+
+

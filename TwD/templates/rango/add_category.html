@@ -1,0 +1,61 @@
+{% extends 'rango/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+	Add category
+{% endblock %}
+
+
+{% block body_block %}
+	
+	<link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/signin/">
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'Bootstrap/registration/Signin_files/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'Bootstrap/registration/Signin_files/signin.css' %}" rel="stylesheet">
+
+	<div class="jumbotron">
+		<h1 class="display-3">Add Category</h1>
+	</div>
+	<div class="container">
+		<form class="form-signin" id='category_form' method='POST' action="{% url 'rango:add_category' %}" >
+			{% csrf_token %}
+			{% for hidden in form.hidden_fields %}
+				{{ hidden }}
+			{% endfor %}
+
+			{% for field in form.visible_fields %}
+				{{ field.errors }}
+				
+			{% endfor %}
+			<label class="sr-only" for="id_name">Category Name</label>
+			<input type="text" name="name" id="id_name" class="form-control" placeholder="Category Name" maxlength="128">
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Create Category</button>
+				
+				
+		</form>
+	</div>
+
+	<script src="{% static 'Bootstrap/registration/Signin_files/ie10-viewport-bug-workaround.js' %}"></script>
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
