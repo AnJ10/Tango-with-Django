@@ -29,7 +29,7 @@ SECRET_KEY = '*r_zt3_o$(8o!wn)=n-9khgzdpxe2$4#dyf$*x_zn#$s#e3!!6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://aniket98.pythonanywhere.com']
 
 
 # Application definition
