@@ -6,15 +6,17 @@ import os
 def read_serpwow_key():
 
 	serpwow_api_key = None
+	absolute_path = os.path.abspath(os.path.dirname(__file__))
+
 
 	try:
-		if os.path.isfile('search.key'):
+		if os.path.isfile(os.path.join(absolute_path, 'search.key')):
 #			print("found 1")
-			with open('search.key', 'r') as f:
+			with open(os.path.join(absolute_path, 'search.key'), 'r') as f:
 				serpwow_api_key = f.readline().strip()
 		else:
 #			print("found 2")
-			with open(os.path.join('..', 'search.key'), 'r') as f:
+			with open(os.path.join(os.path.join(absolute_path, '..'), 'search.key'), 'r') as f:
 				serpwow_api_key = f.readline().strip()		
 
 	except:
